@@ -1,5 +1,9 @@
 package com.example.kotlinTest.test
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 class Test(
     // // // """
 // // // DB 구조
@@ -28,6 +32,8 @@ class Test(
 
     fun main() {
         listOf(TaggerR())
+
+
     }
 
     data class TaggerM(
