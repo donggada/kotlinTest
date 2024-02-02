@@ -33,20 +33,18 @@ public class JavaTest1 {
 
     class Solution {
         public int solution(int[][] sizes) {
-            int answer = 0;
-            int maxW = 0;
-            int maxH = 0;
+            int length = 0;
+            int height = 0;
 
             for (int[] size : sizes) {
                 int w = size[0];
                 int h = size[1];
 
-                maxW = Math.max(w, maxW);
-                maxH = Math.max(h, maxH);
-
+                length = Math.max(length, Math.max(w, h));
+                height = Math.max(height, Math.min(w, h));
 
             }
-            return answer;
+            return length * height;
         }
     }
 
