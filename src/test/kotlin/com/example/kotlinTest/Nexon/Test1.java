@@ -1,8 +1,6 @@
-package com.example.kotlinTest.Nexteosd;
+package com.example.kotlinTest.Nexon;
 
-import com.example.kotlinTest.JavaTest;
 import java.util.HashMap;
-import java.util.HashSet;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

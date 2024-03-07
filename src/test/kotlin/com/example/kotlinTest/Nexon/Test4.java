@@ -1,4 +1,4 @@
-package com.example.kotlinTest.Nexteosd;
+package com.example.kotlinTest.Nexon;
 
 import java.util.ArrayList;
 import java.util.List;
