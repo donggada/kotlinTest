@@ -1,7 +1,7 @@
 package com.example.kotlinTest.백준_DFS_BFS;
 
 import java.util.*;
-public class Test1 {
+public class Test1260 {
     // DFS 와 BFS
     // https://www.acmicpc.net/problem/1260 DFS dhk
     static HashSet<Integer> visited;
