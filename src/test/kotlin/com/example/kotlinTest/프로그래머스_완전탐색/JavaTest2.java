@@ -1,4 +1,4 @@
-package com.example.kotlinTest.프로래머스완전탐색;
+package com.example.kotlinTest.프로그래머스_완전탐색;
 
 
 import java.util.ArrayList;

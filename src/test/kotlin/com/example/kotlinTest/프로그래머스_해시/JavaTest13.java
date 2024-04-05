@@ -1,4 +1,4 @@
-package com.example.kotlinTest.프로그래머스해시;
+package com.example.kotlinTest.프로그래머스_해시;
 
 import java.util.*;
 import org.assertj.core.api.Assertions;

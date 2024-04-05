@@ -1,4 +1,4 @@
-package com.example.kotlinTest.프로그래머스정렬;
+package com.example.kotlinTest.프로그래머스_정렬;
 
 
 import java.util.ArrayList;

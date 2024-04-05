@@ -1,8 +1,7 @@
-package com.example.kotlinTest.프로그래머스해시;
+package com.example.kotlinTest.프로그래머스_해시;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
