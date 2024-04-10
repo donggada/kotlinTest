@@ -8,6 +8,9 @@ class KotlinTestApplicationTests {
 
 	@Test
 	fun contextLoads() {
+
 	}
+
+	companion object
 
 }
