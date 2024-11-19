@@ -3,7 +3,7 @@ package com.example.kotlinTest.백준_DP;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.*;
 
 public class Test1932 {
 

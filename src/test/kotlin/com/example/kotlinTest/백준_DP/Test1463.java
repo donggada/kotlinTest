@@ -11,13 +11,14 @@ public class Test1463 {
 
         int  n = Integer.parseInt(br.readLine());
 
-//        arr = new int[n + 2];
+        arr = new int[n + 2];
 //
 //        arr[2] = 1;
 //        arr[3] = 1;
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        bw.write(bottomUp(n) + "\n");
+//        bw.write(bottomUp(n) + "\n");
+        bw.write(topDown(n) + "\n");
 
         bw.flush();
         bw.close();
@@ -50,32 +51,41 @@ public class Test1463 {
         return arr[n];
     }
 
-//    private static int dp(int n) {
-//        if (n == 2) {
-//            return 1;
-//        }
-//
-//        if (n == 3) {
-//            return 1;
-//        }
-//
-//        if (arr[n] != 0) {
-//            return arr[n];
-//        }
-//
-//        if (n % 3 == 0 && n % 2 == 0) {
-//            return Math.min(dp(n-1), Math.min(dp(n/3), dp(n/2))) + 1;
-//        }
-//
-//        if (n % 3 == 0) {
-//            return Math.min(dp(n-1), dp(n/3)) + 1;
-//        }
-//
-//        if (n % 2 == 0) {
-//            return Math.min(dp(n-1), dp(n/2)) + 1;
-//        }
-//
-//        return dp(n-1) + 1;
-//    }
+    private static int topDown(int n) {
+        if (n == 2) {
+            return 1;
+        }
+
+        if (n == 3) {
+            return 1;
+        }
+
+        if (arr[n] != 0) {
+            return arr[n];
+        }
+
+        if (n % 3 == 0 && n % 2 == 0) {
+            int min = Math.min(topDown(n - 1), Math.min(topDown(n / 3), topDown(n / 2))) + 1;
+            arr[n] = min;
+            return min;
+        }
+
+        if (n % 3 == 0) {
+            int min = Math.min(topDown(n - 1), topDown(n / 3)) + 1;
+            arr[n] = min;
+            return min;
+        }
+
+        if (n % 2 == 0) {
+            int min = Math.min(topDown(n - 1), topDown(n / 2)) + 1;
+            arr[n] = min;
+            return min;
+        }
+
+        int min = topDown(n - 1) + 1;
+        arr[n] = min;
+
+        return arr[n];
+    }
 
 }
