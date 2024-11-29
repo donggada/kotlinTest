@@ -45,7 +45,6 @@ public class Main12015 {
                 mid = (left + right) / 2;
                 if (list.get(mid) < num) {
                     left = mid + 1;
-                    list.set(right, num);
                     continue;
                 }
 
