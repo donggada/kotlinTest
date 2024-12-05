@@ -14,6 +14,7 @@ public class Main11053 {
         Integer n = Integer.valueOf(br.readLine());
         arr = new int[n];
         dp = new int[n];
+
         String[] s = br.readLine().split(" ");
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.valueOf(s[i]);
@@ -29,8 +30,8 @@ public class Main11053 {
             dp[i] = 1;
 
             for (int j = 0; j < i ; j++) {
-                if (arr[i] > arr[j] && dp[i] < dp[j] + 1) {
-                    dp[i] = dp[j] + 1;
+                if (arr[i] > arr[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
                 }
             }
         }
