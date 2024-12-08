@@ -3,7 +3,6 @@ package com.example.kotlinTest.백준_그리디;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class Main1715 {
@@ -24,7 +23,7 @@ public class Main1715 {
             total += sum;
             queue.add(sum);
         }
-        
+
         System.out.println(total);
     }
 
