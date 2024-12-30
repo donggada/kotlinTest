@@ -32,7 +32,7 @@ public class Main17141 {
                 int val = Integer.parseInt(lines[j]);
                 arr[i][j] = val;
                 if (val == 2) {
-                    virusList.add(new int[]{i,j,0});
+                    virusList.add(new int[]{i,j});
                 }
             }
         }
