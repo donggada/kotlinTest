@@ -39,7 +39,7 @@ public class Main14503 {
 
             int nx = pop[0] + dx[pop[2]];
             int ny = pop[1] + dy[pop[2]];
-            
+
 
             moveCount++;
         }
