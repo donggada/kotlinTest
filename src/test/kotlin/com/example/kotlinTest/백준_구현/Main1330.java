@@ -1,4 +1,4 @@
-package com.example.kotlinTest.프로그래머스_구현;
+package com.example.kotlinTest.백준_구현;
 
 import java.io.BufferedReader;
 import java.io.IOException;
