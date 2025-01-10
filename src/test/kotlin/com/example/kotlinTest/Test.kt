@@ -36,6 +36,7 @@ class Test {
             val size : Int = sequence.size
             var temp : Array<IntArray> = Array(size) { IntArray(size) }
 
+
             for ((x) in sequence.withIndex()) {
                 var sumValue = 0
                 var intArray = IntArray(size)

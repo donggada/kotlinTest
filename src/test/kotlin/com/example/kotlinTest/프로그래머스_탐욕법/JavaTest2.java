@@ -32,22 +32,19 @@ public class JavaTest2 {
     }
 
     class Solution {
-
         static int max = 0;
-        public String solution(String number, int k) {
-            String answer = "";
 
+        public String solution(String number, int k) {
             for (int i = 0; i < number.length() - k ; i++) {
                 self(String.valueOf(number.charAt(i)), i, number, k);
             }
 
-            answer = String.valueOf(max);
-            return answer;
+            return String.valueOf(max);
         }
 
         private void self (String val, int index, String number, int k) {
             if (val.length() == number.length() - k) {
-                max = Math.max(max,Integer.parseInt(val));
+                max = Math.max(max, Integer.parseInt(val));
                 return;
             }
 

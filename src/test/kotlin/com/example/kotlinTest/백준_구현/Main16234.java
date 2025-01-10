@@ -32,6 +32,6 @@ public class Main16234 {
     }
 
     private static int move() {
-
+        return 1;
     }
 }

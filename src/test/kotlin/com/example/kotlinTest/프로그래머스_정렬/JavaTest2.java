@@ -28,7 +28,8 @@ public class JavaTest2 {
 
     class Solution {
         public String solution(int[] numbers) {
-            String answer = "";
+
+            StringBuilder result = new StringBuilder();
             String[] strings = new String[numbers.length];
 
             for (int i = 0; i < numbers.length; i++) {
@@ -42,10 +43,10 @@ public class JavaTest2 {
             }
 
             for (String str : strings) {
-                answer+=str;
+                result.append(str);
             }
 
-            return answer;
+            return result.toString();
         }
     }
 
