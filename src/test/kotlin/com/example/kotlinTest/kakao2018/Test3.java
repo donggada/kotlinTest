@@ -1,9 +1,8 @@
 package com.example.kotlinTest.kakao2018;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Test3 {
 
