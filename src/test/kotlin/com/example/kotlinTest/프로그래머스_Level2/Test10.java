@@ -48,65 +48,47 @@ public class Test10 {
     }
 
 
-
-
     class Solution {
         public int solution(String s) {
             int answer = 0;
             HashSet<String> set = new HashSet<>();
 
-            for (int i = 0; i < s.length() ; i++) {
-                set.add(s.substring(i) + s.substring(0, i));
+            for (int i = 0; i < s.length(); i++) {
+                String str = s.substring(i) + s.substring(0, i);
+                Stack<Character> stack = new Stack<>();
+
+                for (char c : str.toCharArray()) {
+                    if (stack.isEmpty()) {
+                        stack.add(c);
+                        continue;
+                    }
+
+                    if (c == ')' && stack.peek() == '(') {
+                        stack.pop();
+                        continue;
+                    }
+
+                    if (c == ']' && stack.peek() == '[') {
+                        stack.pop();
+                        continue;
+                    }
+
+                    if (c == '}' && stack.peek() == '{') {
+                        stack.pop();
+                        continue;
+                    }
+
+                    stack.add(c);
+                }
+
+                if (stack.isEmpty()) {
+                    answer++;
+                }
             }
 
-            for (String string : set) {
-                answer = Math.max(answer,cal(string));
-            }
 
             return answer;
         }
     }
 
-    private int cal (String s) {
-        int count = 0;
-        Stack<Character> tStack = new Stack<>();
-        Stack<Character> mStack = new Stack<>();
-        Stack<Character> sStack = new Stack<>();
-
-        for (char c : s.toCharArray()) {
-            if (c == '}') {
-                if(!tStack.isEmpty()) {
-                    tStack.pop();
-                    count++;
-                }
-            }
-
-            if (c == '{') {
-                tStack.add(c);
-            }
-
-            if (c == ']') {
-                if(!mStack.isEmpty()) {
-                    mStack.pop();
-                    count++;
-                }
-            }
-
-            if (c == '[') {
-                mStack.add(c);
-            }
-
-            if (c == ')') {
-                if(!sStack.isEmpty()) {
-                    sStack.pop();
-                    count++;
-                }
-            }
-
-            if (c == '(') {
-                sStack.add(c);
-            }
-        }
-        return count;
-    }
 }
