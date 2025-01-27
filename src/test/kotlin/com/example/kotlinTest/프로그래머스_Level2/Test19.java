@@ -4,6 +4,8 @@ package com.example.kotlinTest.프로그래머스_Level2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 public class Test19 {
 
     Solution solution = new Solution();
