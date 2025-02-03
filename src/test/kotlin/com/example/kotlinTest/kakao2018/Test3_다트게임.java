@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Test3 {
+public class Test3_다트게임 {
 
     @Test
     void case1() {

@@ -3,12 +3,10 @@ package com.example.kotlinTest.kakao2018;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
-public class Test2 {
+public class Test2_캐쉬 {
 
 
     @Test

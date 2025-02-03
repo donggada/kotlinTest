@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Test4 {
+public class Test4_압축 {
     Solution solution = new Solution();
     @Test
     void case1() {

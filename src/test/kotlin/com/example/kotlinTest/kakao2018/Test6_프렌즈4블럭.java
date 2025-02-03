@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Test6 {
+public class Test6_프렌즈4블럭 {
     Solution solution = new Solution();
     @Test
     void case1() {

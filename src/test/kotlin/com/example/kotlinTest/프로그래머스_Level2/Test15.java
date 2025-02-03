@@ -4,7 +4,10 @@ package com.example.kotlinTest.프로그래머스_Level2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class Test15 {
 
@@ -13,44 +16,65 @@ public class Test15 {
     @Test
     void case1() {
         Assertions.assertThat(
-                solution.solution(2,	4,	2,	1)
+                solution.solution(3,5)
         ).isEqualTo(
-                "0111"
+                new int[]{3,1,2}
         );
     }
 
-    @Test
-    void case2() {
-        Assertions.assertThat(
-                solution.solution(16, 16, 2, 1)
-        ).isEqualTo(
-                "02468ACE11111111"
-        );
-    }
 
-    @Test
-    void case3() {
-        Assertions.assertThat(
-                solution.solution(16, 16, 2, 2)
-        ).isEqualTo(
-                "13579BDF01234567"
-        );
-    }
 
     class Solution {
-        public String solution(int n, int t, int m, int p) {
-            StringBuilder answer = new  StringBuilder();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < t * m; i++) {
-                sb.append(Integer.toString(i, n));
+        static int count;
+        static int[] answer;
+        public int[] solution(int n, long k) {
+            ArrayList<Integer> list = new ArrayList<>();
+            long total = 1;
+            for (int i = 1; i < n + 1; i++) {
+                list.add(i);
+                total *= i;
             }
 
-            for (int i = p-1; answer.length() < t ; i+=m) {
-                answer.append(sb.charAt(i));
+            k--;
+            answer = new int[n];
+            int index = 0;
+            while (index < n) {
+                total /= n - index;
+                answer[index] = list.remove((int) (k / total));
+                index++;
+                k %= total;
             }
 
-            return answer.toString().toUpperCase();
+//            count = 0;
+//            boolean[] visited = new boolean[n];
+//            backTracking(n, k, visited, list, new ArrayList<>());
+            return answer;
         }
+
+        private void backTracking(int n, long k, boolean[] visited, List<Integer> list, List<Integer> result) {
+            if (result.size() == n) {
+                count++;
+                if (count == k) {
+                    answer = new int[n];
+
+                    for (int i = 0; i < n ; i++) {
+                        answer[i] = result.get(i);
+                    }
+                    return;
+                }
+            }
+
+            for (int i = 0; i < n ; i++) {
+                if (!visited[i]) {
+                    visited[i] = true;
+                    ArrayList<Integer> newList = new ArrayList<>(result);
+                    newList.add(list.get(i));
+                    backTracking(n, k, visited, list, newList);
+                    visited[i] = false;
+                }
+            }
+        }
+
     }
 
 }

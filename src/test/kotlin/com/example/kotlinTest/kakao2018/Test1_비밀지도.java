@@ -1,11 +1,10 @@
 package com.example.kotlinTest.kakao2018;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class Test1 {
+public class Test1_비밀지도 {
     Solution solution = new Solution();
     @Test
     void test1 () {

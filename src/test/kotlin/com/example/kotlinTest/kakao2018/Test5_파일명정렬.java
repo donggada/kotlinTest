@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Test5 {
+public class Test5_파일명정렬 {
     Solution solution = new Solution();
     @Test
     void case1() {
