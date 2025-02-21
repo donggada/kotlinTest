@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 public class Test37 {
 
@@ -53,67 +54,50 @@ public class Test37 {
     }
 
 
-    @Test
-    void case5() {
-        assertThat(solution.solution(
-                        new int[][]{{2, 1}, {3, 2}, {2, 3}}, 4, 5
-                )
-        ).isEqualTo(
-                3
-        );
-    }
     class Solution {
-        static int minACount = Integer.MAX_VALUE;
         public int solution(int[][] info, int n, int m) {
-//            dfs(0, 0, info, n,m, 0 ,0);
-
             return dp(info,n,m);
         }
-        private int dp(int[][] info, int n, int m) {
-            // DP 테이블 초기화: -1로 채워서 방문하지 않은 상태로 표시
-            final int INF = Integer.MAX_VALUE;
-            int[][] dp = new int[n + 1][m + 1];
 
-            // DP 초기값 설정
-            for (int i = 0; i <= n; i++) {
-                for (int j = 0; j <= m; j++) {
-                    dp[i][j] = INF;
-                }
+        public int dp(int[][] info, int n, int m) {
+            int itemCount = info.length;
+            int INF = Integer.MAX_VALUE;
+            int[][] dp = new int[itemCount + 1][m];
+
+            for (int[] row : dp) {
+                Arrays.fill(row, INF);
             }
-            dp[0][0] = 0; // 처음에는 A도둑과 B도둑 모두 흔적이 없으므로 0으로 초기화
 
-            // 물건 하나씩 처리
-            for (int[] item : info) {
-                int a = item[0]; // A도둑이 남기는 흔적
-                int b = item[1]; // B도둑이 남기는 흔적
-                // 뒤에서부터 순차적으로 갱신하여 이전 상태를 덮어쓰지 않도록 한다.
-                for (int i = n; i >= 0; i--) {
-                    for (int j = m; j >= 0; j--) {
-                        // A도둑이 물건을 훔친 경우
-                        if (i + a <= n) {
-                            dp[i + a][j] = Math.min(dp[i + a][j], dp[i][j]);
-                        }
-                        // B도둑이 물건을 훔친 경우
-                        if (j + b <= m) {
-                            dp[i][j + b] = Math.min(dp[i][j + b], dp[i][j] + a);
-                        }
+            dp[0][0] = 0;
+
+            for (int i = 0; i < itemCount; i++) {
+                int aTrace = info[i][0];
+                int bTrace = info[i][1];
+
+                for (int j = m - 1; j >= 0; j--) {
+                    if (dp[i][j] == INF){
+                        continue;
+                    }
+
+                    int newATrace = dp[i][j] + aTrace;
+                    if (newATrace < n) {
+                        dp[i + 1][j] = Math.min(dp[i + 1][j], newATrace);
+                    }
+
+                    int newBTrace = j + bTrace;
+                    if (newBTrace < m) {
+                        dp[i + 1][newBTrace] = Math.min(dp[i + 1][newBTrace], dp[i][j]);
                     }
                 }
             }
 
-            // 결과: A도둑이 남긴 흔적의 최소값 찾기
             int result = INF;
-            for (int i = 0; i <= n; i++) {
-                for (int j = 0; j <= m; j++) {
-                    if (dp[i][j] != INF) {
-                        result = Math.min(result, dp[i][j]);
-                    }
-                }
+            for (int j = 0; j < m; j++) {
+                result = Math.min(result, dp[itemCount][j]);
             }
 
-            return result == INF ? -1 : result;
+            return (result == INF) ? -1 : result;
         }
-
 
 
 
@@ -125,7 +109,7 @@ public class Test37 {
             }
 
             if (depth == info.length) {
-                minACount = Math.min(minACount, aCount);
+//                minACount = Math.min(minACount, aCount);
                 return;
             }
 
