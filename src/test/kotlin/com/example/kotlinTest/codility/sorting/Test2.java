@@ -34,19 +34,17 @@ public class Test2 {
 
     class Solution {
         public int solution(int[] A) {
-            ArrayList<Integer> minus = new ArrayList<>();
-            ArrayList<Integer> plus = new ArrayList<>();
-            for (int a : A) {
-                if (a >= 0) {
-                    plus.add(a);
-                    continue;
-                }
-                minus.add(a);
+            int length = A.length;
+            if (length == 3) {
+                return A[0] * A[1] * A[2];
             }
 
+            Arrays.sort(A);
+            int max = Integer.MIN_VALUE;
 
-
-            return 0;
+            max = Math.max(max, A[length-1] * A[length-2] *A[length-3]);
+            max = Math.max(max, A[0] * A[1] *A[length-1]);
+            return max;
         }
     }
 }
