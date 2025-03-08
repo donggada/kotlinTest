@@ -1,34 +1,30 @@
 package com.example.kotlinTest.naver;
 
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.example.kotlinTest.naver.Version.errorVersionMustMatchPattern;
+import static com.example.kotlinTest.naver.Version.errorVersionMustNotBeNull;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class Test3 {
-    @Test
-    public void test () {
-        Version version = new Version(null);
-    }
-
 
     @Test
     public void exampleTest() {
         Version version = new Version("3.8.0");
         assertThat(version.toString()).isEqualTo("Version{3.8.0}");
-        assertThat(version.isSnapshot).isFalse();
+        assertThat(version.isSnapshot()).isFalse();
     }
 
     @Test
     public void exampleTest2() {
         Version version = new Version("3.8.0-SNAPSHOT");
         assertThat(version.toString()).isEqualTo("Version{3.8.0-SNAPSHOT}");
-        assertThat(version.isSnapshot).isTrue();
+        assertThat(version.isSnapshot()).isTrue();
     }
 
 
@@ -96,69 +92,72 @@ public class Test3 {
                 .hasMessageContaining(errorVersionMustMatchPattern);
     }
 
+
+
+}
+
+
+class Version implements Comparable<Version> {
     static final String errorVersionMustNotBeNull = "'version' must not be null!";
     static final String errorOtherMustNotBeNull =  "'other' must not be null!";
     static final String errorVersionMustMatchPattern =  "'version' must match: 'major.minor.patch(-SNAPSHOT)'!";
 
-    class Version implements Comparable<Version> {
-        private final int x;
-        private final int y;
-        private final int z;
-        private boolean isSnapshot;
-        private static final Pattern pattern = Pattern.compile("^(\\d+)(?:\\.(\\d+))?(?:\\.(\\d+))?(-SNAPSHOT)?$");
-        Version(String version) {
-            if (version == null || version.isEmpty()) {
-                throw new IllegalArgumentException(errorVersionMustNotBeNull);
-            }
-
-            Matcher matcher = pattern.matcher(version);
-
-            if (!matcher.matches()) {
-                throw new IllegalArgumentException(errorVersionMustMatchPattern);
-            }
-            this.x = Integer.parseInt(matcher.group(1));
-            this.y = matcher.group(2) != null ? Integer.parseInt(matcher.group(2)) : 0;
-            this.z = matcher.group(3) != null ? Integer.parseInt(matcher.group(3)) : 0;
-            this.isSnapshot = matcher.group(4) != null && matcher.group(4).equals("-SNAPSHOT");
+    private final int x;
+    private final int y;
+    private final int z;
+    private boolean isSnapshot;
+    private static final Pattern pattern = Pattern.compile("^(\\d+)(?:\\.(\\d+))?(?:\\.(\\d+))?(-SNAPSHOT)?$");
+    Version(String version) {
+        if (version == null || version.isEmpty()) {
+            throw new IllegalArgumentException(errorVersionMustNotBeNull);
         }
 
-        boolean isSnapshot() {
-            return isSnapshot;
+        Matcher matcher = pattern.matcher(version);
+
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException(errorVersionMustMatchPattern);
         }
-
-        @Override
-        public int compareTo(Version other) {
-            if (other == null) {
-                throw new IllegalArgumentException(errorOtherMustNotBeNull);
-            }
-
-            if (this.x != other.x) {
-                return Integer.compare(this.x, other.x);
-            }
-
-            if (this.y != other.y) {
-                return Integer.compare(this.y, other.y);
-            }
-
-            if (this.z != other.z) {
-                return Integer.compare(this.z, other.z);
-            }
-
-            if (this.isSnapshot &&  !other.isSnapshot) {
-                return -1;
-            }
-
-            if (!this.isSnapshot && other.isSnapshot) {
-                return 1;
-            }
-
-            return 0;
-        }
-
-        @Override
-        public String toString() {
-            return "Version{" + x + "." + y + "." + z + (isSnapshot ? "-SNAPSHOT" : "") + "}";
-        }
+        this.x = Integer.parseInt(matcher.group(1));
+        this.y = matcher.group(2) != null ? Integer.parseInt(matcher.group(2)) : 0;
+        this.z = matcher.group(3) != null ? Integer.parseInt(matcher.group(3)) : 0;
+        this.isSnapshot = matcher.group(4) != null && matcher.group(4).equals("-SNAPSHOT");
     }
 
+    boolean isSnapshot() {
+        return isSnapshot;
+    }
+
+    @Override
+    public int compareTo(Version other) {
+        if (other == null) {
+            throw new IllegalArgumentException(errorOtherMustNotBeNull);
+        }
+
+        if (this.x != other.x) {
+            return Integer.compare(this.x, other.x);
+        }
+
+        if (this.y != other.y) {
+            return Integer.compare(this.y, other.y);
+        }
+
+        if (this.z != other.z) {
+            return Integer.compare(this.z, other.z);
+        }
+
+        if (this.isSnapshot &&  !other.isSnapshot) {
+            return -1;
+        }
+
+        if (!this.isSnapshot && other.isSnapshot) {
+            return 1;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Version{" + x + "." + y + "." + z + (isSnapshot ? "-SNAPSHOT" : "") + "}";
+    }
 }
