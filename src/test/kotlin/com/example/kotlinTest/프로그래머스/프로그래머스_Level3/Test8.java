@@ -62,11 +62,11 @@ public class Test8 {
             dp[destination] = 0;
 
             while (!queue.isEmpty()) {
-                int pop = queue.pop();
+                int node = queue.pop();
 
-                for (int nextNode : map.getOrDefault(pop, new ArrayList<>())) {
-                    if (dp[nextNode] > dp[pop]+1) {
-                        dp[nextNode] = dp[pop]+1;
+                for (int nextNode : map.getOrDefault(node, new ArrayList<>())) {
+                    if (dp[nextNode] > dp[node] + 1) {
+                        dp[nextNode] = dp[node] + 1;
                         queue.add(nextNode);
                     }
                 }
