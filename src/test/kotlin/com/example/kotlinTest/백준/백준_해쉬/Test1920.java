@@ -1,8 +1,9 @@
-package com.example.kotlinTest.백준.백준_이분탐색;
+package com.example.kotlinTest.백준.백준_해쉬;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Collections;
 import java.util.HashSet;
 
 public class Test1920 {
@@ -14,17 +15,15 @@ public class Test1920 {
         String[] A = br.readLine().split(" ");
         HashSet<String> set = new HashSet<>();
 
-        for (int i = 0; i <A.length ; i++) {
-            set.add(A[i]);
-        }
+        Collections.addAll(set, A);
 
         br.readLine();
 
         String[] M = br.readLine().split(" ");
 
-        for (int i = 0; i < M.length; i++) {
-            if (set.contains(M[i])) {
-                System.out.println("1");
+        for (String s : M) {
+            if (set.contains(s)) {
+                System.out.println("");
                 continue;
             }
 

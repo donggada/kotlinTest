@@ -21,7 +21,7 @@ public class Test2 {
 
 
     class Solution {
-        public int solution(int[] A) {
+        public int solution1(int[] A) {
             HashMap<Integer, Integer> map = new HashMap<>();
             for (int key : A) {
                 map.put(key, map.getOrDefault(key, 0) + 1);
@@ -33,6 +33,16 @@ public class Test2 {
                 }
             }
             return -1;
+        }
+
+        public int solution(int[] A) {
+            int result = 0;
+
+            for (int a : A) {
+                result ^= a;
+            }
+
+            return result;
         }
     }
 

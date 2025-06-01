@@ -81,6 +81,27 @@ public class Test1 {
 
             return result;
         }
+
+        public int[] solution1(int[] A, int K) {
+            if (A.length == 0 || K == 0) {
+                return A;
+            }
+
+            int n = A.length;
+
+            K = K % n;
+
+            if (K == 0) {
+                return A;
+            }
+
+            int[] result = new int[n];
+            for (int i = 0; i < n; i++) {
+                result[(i + K) % n] = A[i];
+            }
+
+            return result;
+        }
     }
 
 }

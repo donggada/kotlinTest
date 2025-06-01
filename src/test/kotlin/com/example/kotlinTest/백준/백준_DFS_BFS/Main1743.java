@@ -23,6 +23,7 @@ public class Main1743 {
             String[] sp = br.readLine().split(" ");
             map[Integer.parseInt(sp[0])-1][Integer.parseInt(sp[1])-1] = true;
         }
+
         int result = 0;
         for (int i = 0; i < n ; i++) {
             for (int j = 0; j < m ; j++) {
@@ -40,6 +41,7 @@ public class Main1743 {
         int count = 1;
         visited[move[0]][move[1]] = true;
         queue.add(move);
+
         while (!queue.isEmpty()) {
             int[] pop = queue.pop();
 

@@ -1,4 +1,4 @@
-package com.example.kotlinTest.백준.백준_이분탐색;
+package com.example.kotlinTest.백준.백준_해쉬;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,17 +11,17 @@ public class Main10815 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        Integer n = Integer.valueOf(br.readLine());
+        int n = Integer.parseInt(br.readLine());
         arr = new int[n];
         HashSet<String> set = new HashSet<>();
 
         String[] s = br.readLine().split(" ");
         for (int i = 0; i < n ; i++) {
-            arr[i] = Integer.valueOf(s[i]);
+            arr[i] = Integer.parseInt(s[i]);
             set.add(s[i]);
         }
 
-        Integer m = Integer.valueOf(br.readLine());
+        int m = Integer.parseInt(br.readLine());
         String[] sp = br.readLine().split(" ");
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < m ; i++) {
